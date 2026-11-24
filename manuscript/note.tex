@@ -1,0 +1,410 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,array}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\hypersetup{pdftitle={Proof of Kimberling's replacement-iterate length and position conjectures},pdfauthor={Haobo Ma; Wenlin Zhang},pdfsubject={CC BY 4.0}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\title{Proof of Kimberling's replacement-iterate length and position conjectures}
+\author{Haobo Ma\\\small ChronoAI Pte Ltd, Singapore
+\and Wenlin Zhang\\\small National University of Singapore\\\small ChronoAI Pte Ltd, Singapore}
+\date{November 17, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We prove Clark Kimberling's length conjecture in OEIS A288476, Comments,
+revision 2 (June 12, 2017), by replacing its
+nonoverlapping binary rewriting rule with a three-letter substitution.
+The iterate lengths satisfy $a_{n+3}=a_{n+2}+4a_{n+1}-2a_n$, starting
+with $2,4,8$. The same substitution proves existence of the odd and even
+limiting words and the position conjectures in A288474, A288475,
+A288552 and A288553. The zero positions divided by their indices tend
+to the largest root $\lambda$ of $x^3-x^2-4x+2$; the corresponding
+limit for ones is $\lambda/(\lambda-1)$. All four stated position bounds hold.
+For every finite binary seed we also obtain an exact length recurrence;
+every seed other than the empty word and $0$ has the same pair of parity
+limits, possibly interchanged.
+\end{abstract}
+
+\section{The replacement rule and the results}
+Let $R$ scan a finite binary word from left to right, replacing each
+original occurrence of $00$ by $0101$ and each original $1$ by $011$.
+After a match it resumes after the consumed input; an unmatched $0$
+is retained, and emitted output is not scanned again. This is the
+\texttt{StringReplace} convention in Kimberling's program
+\cite{a288473,wolfram}. Put $w_0=00$, $w_{n+1}=R(w_n)$, and
+$a_n=|w_n|$, where $|w|$ denotes the length of a finite word.
+Thus
+\[
+w_0=00,\qquad w_1=0101,\qquad w_2=00110011.
+\]
+The conjecture in A288476 identifies these lengths with an independently
+specified recurrence \cite{a288476}. It is repeated in the entries for
+the odd and even limiting words \cite{a288473,a288551}.
+The earlier comment in A288473, revision 3 (June 11, 2017), refers
+to A288276; Kimberling corrected that reference to A288476 in revision 5
+on the same date. We use the recurrence stated explicitly in A288476.
+
+For comparison, Dvo\v{r}\'akov\'a, Pelantov\'a and Shallit
+\cite[Section 2]{dps} use a boundary-compatible block substitution for
+Kimberling's different rule $00\mapsto0101$, $1\mapsto10$.
+Their length sequence starts $2,4,6,10$ and has an order-four recurrence.
+Here $1\mapsto011$ instead leads to a cubic recurrence and two parity
+limits. We give the boundary identity explicitly, then use the same
+substitution to determine densities and position bounds.
+
+For an infinite binary word $u$, let $z_u(j)$ and $o_u(j)$ be the
+one-based positions of its $j$th zero and its $j$th one, respectively,
+for integers $j\geq1$.
+
+\begin{theorem}\label{thm:main}
+The lengths $a_n$ satisfy
+\begin{equation}\label{eq:recurrence}
+a_0=2,\quad a_1=4,\quad a_2=8,\qquad
+a_{n+3}=a_{n+2}+4a_{n+1}-2a_n\quad(n\geq0),
+\end{equation}
+and consequently
+\begin{equation}\label{eq:gf}
+\sum_{n\geq0}a_n x^n=\frac{2+2x-4x^2}{1-x-4x^2+2x^3}.
+\end{equation}
+Both $u^{(0)}=\lim_{k\to\infty}w_{2k}$ and
+$u^{(1)}=\lim_{k\to\infty}w_{2k+1}$ exist in the prefix sense.
+Let $\lambda$ be the largest real root of $x^3-x^2-4x+2$, and put
+$\mu=\lambda/(\lambda-1)$. For either word $u$,
+\begin{equation}\label{eq:positions}
+\lim_{j\to\infty}\frac{z_u(j)}j=\lambda,
+\qquad
+\lim_{j\to\infty}\frac{o_u(j)}j=\mu.
+\end{equation}
+For all $j\geq1$ and either word,
+\[
+-1<\lambda-\frac{z_u(j)}j<2.
+\]
+For $u=u^{(1)}$ the one-position bounds are
+$-1<\mu-o_u(j)/j<1$; for $u=u^{(0)}$ they are
+$-2<\mu-o_u(j)/j<1$.
+\end{theorem}
+
+\section{A boundary-compatible substitution}
+On the alphabet $\{D,E,O\}$ define a substitution $\sigma$ and an
+encoding $h$ by
+\[
+\begin{array}{c|ccc}
+c&D&E&O\\\hline
+h(c)&00&01&1\\
+\sigma(c)&EE&DOO&EO
+\end{array}
+\]
+and extend both maps to finite words by concatenation.
+The binary scan $R$ itself does not preserve arbitrary concatenations:
+$R(0)R(0)=00$ but $R(00)=0101$.
+
+\begin{lemma}\label{lem:bridge}
+For every letter $c\in\{D,E,O\}$ and finite binary suffix $v$,
+\begin{equation}\label{eq:boundary}
+R(h(c)v)=h(\sigma(c))R(v).
+\end{equation}
+Consequently $R(h(t))=h(\sigma(t))$ for every finite ternary word $t$,
+and $w_n=h(\sigma^n(D))$ for every $n\geq0$.
+\end{lemma}
+\begin{proof}
+For $c=D$, the initial $00$ is consumed and emits $0101=h(EE)$.
+For $c=E$, the initial $0$ is unmatched and the following $1$ emits
+$011$, giving $0011=h(DOO)$. For $c=O$, the initial $1$ emits
+$011=h(EO)$. In every case scanning then starts at $v$.
+Applying these identities to successive letters proves the word identity,
+including the empty word. Since $h(D)=00$, induction on $n$ proves the last assertion.
+\end{proof}
+
+Put $A_n=|h(\sigma^n(D))|$, $B_n=|h(\sigma^n(E))|$ and
+$C_n=|h(\sigma^n(O))|$. Concatenating the three substituted images gives
+\begin{equation}\label{eq:states}
+A_{n+1}=2B_n,\qquad B_{n+1}=A_n+2C_n,\qquad C_{n+1}=B_n+C_n.
+\end{equation}
+In particular $A_0=2$, $A_1=4$, $A_2=8$, and
+\[
+\begin{aligned}
+A_{n+3}&=2A_{n+1}+4C_{n+1}
+       =2A_{n+1}+4B_n+4C_n\\
+       &=4A_{n+1}+4C_n
+        =A_{n+2}+4A_{n+1}-2A_n.
+\end{aligned}
+\]
+The last equality uses $A_{n+2}=2A_n+4C_n$.
+Lemma~\ref{lem:bridge} identifies $A_n$ with $a_n$, proving
+\eqref{eq:recurrence}. Multiplication of its formal power series by
+$1-x-4x^2+2x^3$ leaves coefficients $2,2,-4$ in degrees $0,1,2$
+and zero thereafter. This proves \eqref{eq:gf}, the generating function
+already recorded in A288476.
+
+\section{Parity limits and their densities}
+Since
+\[
+\sigma^2(D)=DOODOO,\qquad \sigma^2(E)=EEEOEO,
+\]
+the words $\sigma^{2k}(D)$ are nested prefixes, as are
+$\sigma^{2k}(E)$. Each substituted letter has at least two letters,
+so their lengths tend to infinity. Their infinite limits, denoted by
+$v_D$ and $v_E$, are fixed by $\sigma^2$.
+The nonempty encoding preserves nested prefixes. As
+$\sigma^{2k+1}(D)=\sigma^{2k}(E)\sigma^{2k}(E)$,
+the binary parity limits are
+$u^{(0)}=h(v_D)$ and $u^{(1)}=h(v_E)$. They are distinct:
+their prefixes are $0011$ and $0101$, respectively.
+
+The incidence matrix of $\sigma$, with columns indexed by input letters
+and rows in the order $D,E,O$, is
+\[
+M=\begin{pmatrix}0&1&0\\2&0&1\\0&2&1\end{pmatrix},\qquad
+\det(xI-M)=p(x):=x^3-x^2-4x+2.
+\]
+The signs of $p$ give one root in each of
+\[
+(-2,-3/2),\qquad (0,1/2),\qquad (7/3,12/5).
+\]
+These are all its roots because it has degree three. They are distinct,
+and the last, $\lambda$, strictly dominates the absolute values of the others.
+Positive right and left eigenvectors for $\lambda$ are
+\[
+r=\begin{pmatrix}1/\lambda\\1\\2/(\lambda-1)\end{pmatrix},
+\qquad
+\ell=\begin{pmatrix}2/\lambda\\1\\1/(\lambda-1)\end{pmatrix}.
+\]
+Substitution and $p(\lambda)=0$ verify $Mr=\lambda r$ and
+$\ell^{T}M=\lambda\ell^{T}$. Diagonalization with the three distinct
+roots therefore gives
+\begin{equation}\label{eq:projection}
+\lambda^{-m}M^m\longrightarrow\frac{r\ell^{T}}{\ell^{T}r}.
+\end{equation}
+Indeed eigenvectors for the other two roots are annihilated by
+$\ell^{T}$, and their contributions tend to zero after division by
+$\lambda^m$. Every column of the displayed limit is a positive multiple of $r$.
+
+The numbers of zeros and the lengths in an encoded ternary word are
+obtained by applying the row vectors $q=(2,1,0)$ and $b=(2,2,1)$ to
+its letter-count column. It follows from \eqref{eq:projection} that,
+uniformly over the three letters $c$,
+\[
+\frac{\#0\text{ in }h(\sigma^m(c))}{|h(\sigma^m(c))|}
+\longrightarrow \frac{qr}{br}=\frac1\lambda.
+\]
+For the final equality, $qr=1+2/\lambda$ and
+$br=2/\lambda+2+2/(\lambda-1)=\lambda+2$,
+the latter identity being equivalent to $p(\lambda)=0$.
+
+This block limit implies a density for every prefix of either infinite
+binary word, not just for the substitution iterates. To see this, fix
+$\varepsilon>0$ and take $m=2k$ so large that each of the three
+encoded blocks $h(\sigma^{2k}(c))$ has zero proportion within
+$\varepsilon$ of $1/\lambda$. Because $v_D$ and $v_E$ are fixed
+by $\sigma^{2k}$, either infinite binary word is tiled by these blocks.
+For a prefix of length $N$, the complete blocks contribute discrepancy
+at most $\varepsilon N$. The one remaining partial block has length
+at most $L_k=\max_c|h(\sigma^{2k}(c))|$, so its discrepancy is
+at most $L_k$. Dividing by $N$, then letting $N$ tend to infinity
+and $\varepsilon$ to zero, gives zero density $1/\lambda$ and
+one density $(\lambda-1)/\lambda$.
+Both densities are positive, so both symbols occur infinitely often.
+At $N=z_u(j)$ the zero count is $j$, and at $N=o_u(j)$ the one count
+is $j$. Taking reciprocals of the two positive density limits proves
+\eqref{eq:positions}.
+
+\begin{corollary}\label{cor:counts}
+Let $Z_n$ and $I_n$ be the numbers of zeros and ones in $w_n$.
+Each satisfies the same cubic recurrence as $a_n$, with initial triples
+$(2,2,4)$ and $(0,2,4)$, respectively. Moreover,
+\[
+\frac{Z_n}{a_n}\longrightarrow\frac1\lambda,\qquad
+\frac{I_n}{a_n}\longrightarrow\frac{\lambda-1}{\lambda},\qquad
+\frac{a_{n+1}}{a_n}\longrightarrow\lambda.
+\]
+\end{corollary}
+\begin{proof}
+The three sequences are obtained by applying the rows $(2,1,0)$,
+$(0,1,1)$ and $(2,2,1)$ to $M^n(1,0,0)^T$.
+The characteristic identity $M^3-M^2-4M+2I=0$ gives each recurrence.
+Equation~\eqref{eq:projection} gives the limits, since its column
+corresponding to $D$ is a positive multiple of $r$.
+\end{proof}
+
+\section{The position inequalities}
+Any finite binary input factors greedily into $00$, $01$, and $1$,
+with a possible terminal $0$. The respective output blocks are
+$0101$, $0011$, and $011$, with that possible terminal $0$ retained.
+The complete nonterminal blocks have at least as many ones as zeros;
+within each block the excess of zeros over ones is at most two,
+and at a position occupied by $1$ it is at most one.
+It follows that every output prefix ending at its $j$th one has
+length at most $2j+1$.
+Also, output begins with $0$ and contains no $111$: each block begins
+with $0$ and contains at most two consecutive ones. Thus the first
+zero is at position $1$ and gaps between successive zeros are at most three.
+These statements pass to both parity limits, giving
+\begin{equation}\label{eq:elementarybounds}
+j\leq z_u(j)\leq3j-2,\qquad j\leq o_u(j)\leq2j+1.
+\end{equation}
+Since $7/3<\lambda<12/5$,
+$12/7<\mu<7/4$. The zero-position inequalities now follow from
+$1\leq z_u(j)/j\leq3$.
+For the odd limit, $o_{u^{(1)}}(1)=2$, and for $j\geq2$
+\eqref{eq:elementarybounds} gives $o_{u^{(1)}}(j)/j\leq5/2$.
+Hence $\mu-o_{u^{(1)}}(j)/j>-1$ for every $j\geq1$.
+For the even limit, $o_{u^{(0)}}(j)/j\leq3$ gives
+$\mu-o_{u^{(0)}}(j)/j>-2$. In both cases the upper bound is
+$\mu-o_u(j)/j\leq\mu-1<1$. This completes the proof of
+Theorem~\ref{thm:main}.
+
+\begin{corollary}\label{cor:complements}
+The increasing position sequences A288474 and A288475 partition the
+positive integers, as do A288552 and A288553.
+\end{corollary}
+\begin{proof}
+At every position of either infinite binary word there is exactly one
+symbol. Both symbols occur infinitely often by their positive densities.
+\end{proof}
+
+\section{The same two limits for arbitrary seeds}
+The following extension concerns the same replacement rule; it is not
+posed in the seven sequence entries.
+\begin{corollary}\label{cor:seeds}
+Every finite binary word $s$ has a unique greedy decomposition
+$s=h(t)0^\delta$, where $t$ is a word over $\{D,E,O\}$ and
+$\delta\in\{0,1\}$. Set $L_n=|R^n(s)|$. For every $n\geq0$,
+\begin{align}
+R^n(s)&=h(\sigma^n(t))0^\delta,\label{eq:seedcoding}\\
+L_{n+3}&=L_{n+2}+4L_{n+1}-2L_n-2\delta,\label{eq:seedcubic}\\
+L_{n+4}&=2L_{n+3}+3L_{n+2}-6L_{n+1}+2L_n.\label{eq:seedquartic}
+\end{align}
+If $t$ is nonempty, then the even and odd iterates of $s$ converge
+in the prefix sense to $u^{(0)}$ and $u^{(1)}$, respectively, when
+the first letter of $t$ is $D$ or $O$, and in the opposite order when
+it is $E$. The two excluded seeds, the empty word and $0$, are fixed.
+\end{corollary}
+\begin{proof}
+Parse $s$ from left to right as $00$, $01$, or $1$, leaving a terminal
+$0$ precisely when no following symbol is available to pair with it.
+The choice at every step is forced. Applying
+Lemma~\ref{lem:bridge} to each letter, with suffix $0^\delta$, proves
+\eqref{eq:seedcoding} by induction, since $R(0^\delta)=0^\delta$.
+For the letter-count column $v$ of $t$ this gives
+$L_n=(2,2,1)M^nv+\delta$. The characteristic identity for $M$
+annihilates the first term; on the constant term its shift polynomial
+has value $p(1)=-2$, giving \eqref{eq:seedcubic}.
+Subtracting this equation at consecutive indices gives
+\eqref{eq:seedquartic}.
+
+For a first letter $D$ or $E$, the initial block
+$\sigma^{2k}(D)$ or $\sigma^{2k}(E)$ has length at least $2^{2k}$
+and tends to $v_D$ or $v_E$; every subsequent letter and the terminal
+$0$ therefore lie beyond any fixed prefix. The odd iterates have the
+other limit because $\sigma(D)=EE$ and $\sigma(E)=DOO$.
+For a first letter $O$, use
+$\sigma(O)=EO$ and $\sigma^2(O)=DOOEO$ to obtain the same limits
+as for $D$. Encoding gives the stated binary limits.
+If $t$ is empty, $s$ is the empty word or $0$, and the scanning
+definition proves the final assertion directly.
+\end{proof}
+
+\section{Source coverage}
+
+Table~\ref{tab:coverage} separates the source assertions from the
+extensions above. The quoted conjectures are in the Comments of
+the listed revisions; all position indices start at one.
+In each position row, $m$ denotes the limit in that row.
+``Proved'' refers to the written proofs above. The final section
+specifies the narrower scope of the Lean declaration.
+The cross-reference lists of A288552 and A288553 include A288276.
+Its definition concerns rooted maps, not this replacement rule
+\cite{a288276}; no assertion about that sequence follows from the
+present argument.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.23\textwidth}>{\raggedright\arraybackslash}p{.51\textwidth}>{\raggedright\arraybackslash}p{.18\textwidth}@{}}
+\toprule
+Entry and locator & Statement & Coverage\\\midrule
+A288476, rev. 8, Comments & ``$a(n)$ is the number of letters'' in the $n$th iterate & Proved\\
+A288476, rev. 8, Formula & Recorded rational generating function & Proved\\
+A288473, rev. 9, Name/Comments & Odd limiting word; repeated length conjecture & Proved\\
+A288551, rev. 9, Name/Comments & Even limiting word; repeated length conjecture & Proved\\
+A288474, rev. 12, Comments & ``$a(n)/n\to2.34\ldots$'' and $-1<m-a(n)/n<2$ & Proved\\
+A288475, rev. 12, Comments & ``$a(n)/n\to1.74\ldots$'' and $-1<m-a(n)/n<1$ & Proved\\
+A288552, rev. 8, Comments & ``$a(n)/n\to2.34\ldots$'' and $-1<m-a(n)/n<2$ & Proved\\
+A288553, rev. 8, Comments & ``$a(n)/n\to1.74\ldots$'' and $-2<m-a(n)/n<1$ & Proved\\
+A288474/475 and A288552/553, Names & Complementary position sequences (Corollary~\ref{cor:complements}) & Proved\\
+Corollaries~\ref{cor:counts} and~\ref{cor:seeds} & Symbol counts, length growth, and arbitrary finite seeds & Not posed; proved\\
+A288276, rev. 15, Name & Rooted maps of genus four with six faces & Not covered\\
+\bottomrule
+\end{tabular}
+\caption{Source statements, with one-based position indices.}\label{tab:coverage}
+\end{table}
+
+\section{Formal scope and finite checks}
+The pinned \href{https://github.com/the-omega-institute/trureturing/blob/79dfe4f731baccd42dd3c56cf6331a0ddd3cafdb/D5/S1/Words/KimberlingA288476Length.lean}{\texttt{KimberlingA288476Length.lean}}
+contains the namespace
+\begin{quote}\ttfamily D5.S1.Words.KimberlingA288476Length\end{quote}
+Here \texttt{sourceScan} implements the original-input scanning rule,
+\texttt{sourceIter} starts with $00$, and
+\texttt{recurrenceSeq} is specified independently by \eqref{eq:recurrence}.
+Its declaration \texttt{result} proves
+\[
+\bigl(|\texttt{sourceIter}(n)|:\mathbb Z\bigr)
+   =\texttt{recurrenceSeq}(n)\qquad(n\in\mathbb N).
+\]
+The supporting declarations \texttt{scan\_code\_prefix},
+\texttt{scan\_code\_word}, \texttt{native\_iterate\_code},
+\texttt{coded\_step} and \texttt{coded\_recurrence} establish the
+boundary identity, coding and length recurrence.
+The generating function, parity limits, densities, position bounds
+and Corollaries~\ref{cor:counts}--\ref{cor:seeds} have written proofs
+in this note. The accompanying
+\texttt{verify.py} compares direct scanning, regular-expression
+replacement and ternary encoding on finite iterates, and checks the
+matrix identity, rational root intervals and position inequalities
+using integer and rational arithmetic. It also checks every seed
+of length at most eight against \eqref{eq:seedcoding}--\eqref{eq:seedquartic}
+through iterate seven and compares finite parity prefixes.
+The finite checks and their
+explicit ranges are recorded in \texttt{verify-output.json}.
+
+\begingroup\small
+\begin{thebibliography}{10}
+\setlength{\itemsep}{2pt}
+\bibitem{a288476} C. Kimberling, OEIS A288476, Comments and Formula,
+revision 8 (April 6, 2020); conjecture inserted in revision 2 (June 12, 2017).
+\url{https://oeis.org/A288476};
+\url{https://oeis.org/history?seq=A288476}.
+\bibitem{a288473} C. Kimberling, OEIS A288473, Comments and Mathematica program,
+revision 9 (April 6, 2020); length comment inserted in revision 3 and
+its sequence reference corrected in revision 5 (June 11, 2017).
+\url{https://oeis.org/A288473}; \url{https://oeis.org/history?seq=A288473}.
+\bibitem{a288474} C. Kimberling, OEIS A288474, Comments,
+revision 12 (June 15, 2017). \url{https://oeis.org/A288474}.
+\bibitem{a288475} C. Kimberling, OEIS A288475, Comments,
+revision 12 (June 13, 2017). \url{https://oeis.org/A288475}.
+\bibitem{a288551} C. Kimberling, OEIS A288551, Comments,
+revision 9 (April 6, 2020). \url{https://oeis.org/A288551}.
+\bibitem{a288552} C. Kimberling, OEIS A288552, Comments,
+revision 8 (March 12, 2025). \url{https://oeis.org/A288552}.
+\bibitem{a288553} C. Kimberling, OEIS A288553, Comments,
+revision 8 (March 12, 2025). \url{https://oeis.org/A288553}.
+\bibitem{a288276} G. Coserea, OEIS A288276, Name,
+revision 15 (November 5, 2025). \url{https://oeis.org/A288276}.
+\bibitem{dps} L. Dvo\v{r}\'akov\'a, E. Pelantov\'a and J. Shallit,
+On a sequence of Kimberling and its relationship to the Tribonacci word,
+\emph{Discrete Mathematics \& Theoretical Computer Science}
+\textbf{28:2}, no. 19 (2026), Section 2.
+\url{https://doi.org/10.46298/dmtcs.16926}; arXiv:2510.11318v5.
+\bibitem{wolfram} Wolfram Research, \texttt{StringReplace}, Details,
+Wolfram Language documentation. Accessed November 17, 2026.
+\url{https://reference.wolfram.com/language/ref/StringReplace.html}.
+\end{thebibliography}
+\endgroup
+\bigskip\noindent\small
+\copyright\ 2026 Haobo Ma and Wenlin Zhang.
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
+\url{https://creativecommons.org/licenses/by/4.0/}
+\end{document}

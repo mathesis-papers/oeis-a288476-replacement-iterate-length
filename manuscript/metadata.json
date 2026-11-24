@@ -1,0 +1,15 @@
+{
+  "id": "oeis-a288476-replacement-iterate-length",
+  "revision": 2,
+  "problem_ids": ["oeis-a288476-replacement-iterate-length"],
+  "topic": "Kimberling's replacement-iterate length and companion position conjectures",
+  "title": "Proof of Kimberling's replacement-iterate length and position conjectures",
+  "creators": [
+    {"name": "Ma, Haobo", "affiliation": "ChronoAI Pte Ltd, Singapore"},
+    {"name": "Zhang, Wenlin", "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore"}
+  ],
+  "abstract": "We prove Clark Kimberling's length conjecture in OEIS A288476, Comments, revision 2 (June 12, 2017), by replacing its nonoverlapping binary rewriting rule with a three-letter substitution. The iterate lengths satisfy a(n+3)=a(n+2)+4a(n+1)-2a(n), starting with 2,4,8. The same substitution proves existence of the odd and even limiting words and the position conjectures in A288474, A288475, A288552 and A288553. The zero positions divided by their indices tend to the largest root lambda of x^3-x^2-4x+2; the corresponding limit for ones is lambda/(lambda-1). All four stated position bounds hold. For every finite binary seed we also obtain an exact length recurrence; every seed other than the empty word and 0 has the same pair of parity limits, possibly interchanged.",
+  "summary": "A boundary-compatible three-letter substitution proves the binary iterate-length recurrence, rational generating function, both parity limits and four companion position conjectures. Corollaries give symbol-count recurrences, exact recurrences for every finite seed and the common pair of limiting words for every nontrivial seed. The pinned Lean declaration covers the length equality from 00; the other results have written proofs.",
+  "license": "cc-by-4.0",
+  "evidence_url": "https://github.com/the-omega-institute/trureturing/blob/79dfe4f731baccd42dd3c56cf6331a0ddd3cafdb/D5/S1/Words/KimberlingA288476Length.lean"
+}

@@ -1,0 +1,74 @@
+{
+  "arithmetic": "integers and rational numbers",
+  "native_regex_coding_agreement": {
+    "first_index": 0,
+    "last_index": 14,
+    "last_length": 224644
+  },
+  "boundary_identity_cases": 1533,
+  "generating_function_coefficients": {
+    "first_index": 0,
+    "last_index": 2000
+  },
+  "position_inequalities": {
+    "even_iterate": 14,
+    "odd_iterate": 13,
+    "range": "every zero and one position in each stated finite iterate"
+  },
+  "cubic_matrix_identity": true,
+  "three_disjoint_rational_root_intervals": [
+    [
+      "-2",
+      "-3/2"
+    ],
+    [
+      "0",
+      "1/2"
+    ],
+    [
+      "7/3",
+      "12/5"
+    ]
+  ],
+  "symbol_count_recurrences": {
+    "first_index": 0,
+    "last_index": 14,
+    "zeros_initial": [
+      2,
+      2,
+      4
+    ],
+    "ones_initial": [
+      0,
+      2,
+      4
+    ]
+  },
+  "arbitrary_seeds": {
+    "seed_lengths": [
+      0,
+      8
+    ],
+    "seeds": 511,
+    "terminal_zero_seeds": 170,
+    "coding_iterates": [
+      0,
+      7
+    ],
+    "cubic_recurrence_start_indices": [
+      0,
+      4
+    ],
+    "quartic_recurrence_start_indices": [
+      0,
+      3
+    ],
+    "parity_comparisons": 1018,
+    "parity_iterates": [
+      8,
+      9
+    ],
+    "parity_prefix_length": 64
+  },
+  "scope": "Finite checks supplement the all-index and limiting arguments in the note."
+}

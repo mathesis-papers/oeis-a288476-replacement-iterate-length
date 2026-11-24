@@ -1,0 +1,189 @@
+{
+  "nodes": [
+    {
+      "attribution": null,
+      "authors": [
+        {
+          "affiliation": "ChronoAI Pte Ltd, Singapore",
+          "name": "Haobo Ma"
+        },
+        {
+          "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+          "name": "Wenlin Zhang"
+        }
+      ],
+      "claim": "s1",
+      "contributor": null,
+      "identity": "collected:oeis-a288476-replacement-iterate-length:2:s1",
+      "kind": "paper",
+      "label": "Theorem",
+      "lean_source": {
+        "revision": "79dfe4f731baccd42dd3c56cf6331a0ddd3cafdb",
+        "url": "https://github.com/the-omega-institute/trureturing/blob/79dfe4f731baccd42dd3c56cf6331a0ddd3cafdb/D5/S1/Words/KimberlingA288476Length.lean"
+      },
+      "lineage": "collected:oeis-a288476-replacement-iterate-length:s1",
+      "macros": {},
+      "next_step": "Existing Lean evidence is being checked before new proof work.",
+      "proof_basis": null,
+      "proof_state": "preparing",
+      "receipt": null,
+      "record": "oeis-a288476-replacement-iterate-length",
+      "scope": "in_scope",
+      "statement": "The lengths $a_n$ satisfy\n\\begin{equation}\na_0=2,\\quad a_1=4,\\quad a_2=8,\\qquad\na_{n+3}=a_{n+2}+4a_{n+1}-2a_n\\quad(n\\geq0),\n\\end{equation}\nand consequently\n\\begin{equation}\n\\sum_{n\\geq0}a_n x^n=\\frac{2+2x-4x^2}{1-x-4x^2+2x^3}.\n\\end{equation}\nBoth $u^{(0)}=\\lim_{k\\to\\infty}w_{2k}$ and\n$u^{(1)}=\\lim_{k\\to\\infty}w_{2k+1}$ exist in the prefix sense.\nLet $\\lambda$ be the largest real root of $x^3-x^2-4x+2$, and put\n$\\mu=\\lambda/(\\lambda-1)$. For either word $u$,\n\\begin{equation}\n\\lim_{j\\to\\infty}\\frac{z_u(j)}j=\\lambda,\n\\qquad\n\\lim_{j\\to\\infty}\\frac{o_u(j)}j=\\mu.\n\\end{equation}\nFor all $j\\geq1$ and either word,\n\\[\n-1<\\lambda-\\frac{z_u(j)}j<2.\n\\]\nFor $u=u^{(1)}$ the one-position bounds are\n$-1<\\mu-o_u(j)/j<1$; for $u=u^{(0)}$ they are\n$-2<\\mu-o_u(j)/j<1$.",
+      "status": "preparing",
+      "target_digest": null,
+      "title": "Proof of Kimberling's replacement-iterate length and position conjectures",
+      "toolchain": null,
+      "version": 2,
+      "work": "oeis-a288476-replacement-iterate-length"
+    },
+    {
+      "attribution": null,
+      "authors": [
+        {
+          "affiliation": "ChronoAI Pte Ltd, Singapore",
+          "name": "Haobo Ma"
+        },
+        {
+          "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+          "name": "Wenlin Zhang"
+        }
+      ],
+      "claim": "s2",
+      "contributor": null,
+      "identity": "collected:oeis-a288476-replacement-iterate-length:2:s2",
+      "kind": "paper",
+      "label": "Lemma",
+      "lean_source": {
+        "revision": "79dfe4f731baccd42dd3c56cf6331a0ddd3cafdb",
+        "url": "https://github.com/the-omega-institute/trureturing/blob/79dfe4f731baccd42dd3c56cf6331a0ddd3cafdb/D5/S1/Words/KimberlingA288476Length.lean"
+      },
+      "lineage": "collected:oeis-a288476-replacement-iterate-length:s2",
+      "macros": {},
+      "next_step": "Existing Lean evidence is being checked before new proof work.",
+      "proof_basis": null,
+      "proof_state": "preparing",
+      "receipt": null,
+      "record": "oeis-a288476-replacement-iterate-length",
+      "scope": "in_scope",
+      "statement": "For every letter $c\\in\\{D,E,O\\}$ and finite binary suffix $v$,\n\\begin{equation}\nR(h(c)v)=h(\\sigma(c))R(v).\n\\end{equation}\nConsequently $R(h(t))=h(\\sigma(t))$ for every finite ternary word $t$,\nand $w_n=h(\\sigma^n(D))$ for every $n\\geq0$.",
+      "status": "preparing",
+      "target_digest": null,
+      "title": "Proof of Kimberling's replacement-iterate length and position conjectures",
+      "toolchain": null,
+      "version": 2,
+      "work": "oeis-a288476-replacement-iterate-length"
+    },
+    {
+      "attribution": null,
+      "authors": [
+        {
+          "affiliation": "ChronoAI Pte Ltd, Singapore",
+          "name": "Haobo Ma"
+        },
+        {
+          "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+          "name": "Wenlin Zhang"
+        }
+      ],
+      "claim": "s3",
+      "contributor": null,
+      "identity": "collected:oeis-a288476-replacement-iterate-length:2:s3",
+      "kind": "paper",
+      "label": "Corollary",
+      "lean_source": {
+        "revision": "79dfe4f731baccd42dd3c56cf6331a0ddd3cafdb",
+        "url": "https://github.com/the-omega-institute/trureturing/blob/79dfe4f731baccd42dd3c56cf6331a0ddd3cafdb/D5/S1/Words/KimberlingA288476Length.lean"
+      },
+      "lineage": "collected:oeis-a288476-replacement-iterate-length:s3",
+      "macros": {},
+      "next_step": "Existing Lean evidence is being checked before new proof work.",
+      "proof_basis": null,
+      "proof_state": "preparing",
+      "receipt": null,
+      "record": "oeis-a288476-replacement-iterate-length",
+      "scope": "in_scope",
+      "statement": "Let $Z_n$ and $I_n$ be the numbers of zeros and ones in $w_n$.\nEach satisfies the same cubic recurrence as $a_n$, with initial triples\n$(2,2,4)$ and $(0,2,4)$, respectively. Moreover,\n\\[\n\\frac{Z_n}{a_n}\\longrightarrow\\frac1\\lambda,\\qquad\n\\frac{I_n}{a_n}\\longrightarrow\\frac{\\lambda-1}{\\lambda},\\qquad\n\\frac{a_{n+1}}{a_n}\\longrightarrow\\lambda.\n\\]",
+      "status": "preparing",
+      "target_digest": null,
+      "title": "Proof of Kimberling's replacement-iterate length and position conjectures",
+      "toolchain": null,
+      "version": 2,
+      "work": "oeis-a288476-replacement-iterate-length"
+    },
+    {
+      "attribution": null,
+      "authors": [
+        {
+          "affiliation": "ChronoAI Pte Ltd, Singapore",
+          "name": "Haobo Ma"
+        },
+        {
+          "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+          "name": "Wenlin Zhang"
+        }
+      ],
+      "claim": "s4",
+      "contributor": null,
+      "identity": "collected:oeis-a288476-replacement-iterate-length:2:s4",
+      "kind": "paper",
+      "label": "Corollary",
+      "lean_source": {
+        "revision": "79dfe4f731baccd42dd3c56cf6331a0ddd3cafdb",
+        "url": "https://github.com/the-omega-institute/trureturing/blob/79dfe4f731baccd42dd3c56cf6331a0ddd3cafdb/D5/S1/Words/KimberlingA288476Length.lean"
+      },
+      "lineage": "collected:oeis-a288476-replacement-iterate-length:s4",
+      "macros": {},
+      "next_step": "Existing Lean evidence is being checked before new proof work.",
+      "proof_basis": null,
+      "proof_state": "preparing",
+      "receipt": null,
+      "record": "oeis-a288476-replacement-iterate-length",
+      "scope": "in_scope",
+      "statement": "The increasing position sequences A288474 and A288475 partition the\npositive integers, as do A288552 and A288553.",
+      "status": "preparing",
+      "target_digest": null,
+      "title": "Proof of Kimberling's replacement-iterate length and position conjectures",
+      "toolchain": null,
+      "version": 2,
+      "work": "oeis-a288476-replacement-iterate-length"
+    },
+    {
+      "attribution": null,
+      "authors": [
+        {
+          "affiliation": "ChronoAI Pte Ltd, Singapore",
+          "name": "Haobo Ma"
+        },
+        {
+          "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+          "name": "Wenlin Zhang"
+        }
+      ],
+      "claim": "s5",
+      "contributor": null,
+      "identity": "collected:oeis-a288476-replacement-iterate-length:2:s5",
+      "kind": "paper",
+      "label": "Corollary",
+      "lean_source": {
+        "revision": "79dfe4f731baccd42dd3c56cf6331a0ddd3cafdb",
+        "url": "https://github.com/the-omega-institute/trureturing/blob/79dfe4f731baccd42dd3c56cf6331a0ddd3cafdb/D5/S1/Words/KimberlingA288476Length.lean"
+      },
+      "lineage": "collected:oeis-a288476-replacement-iterate-length:s5",
+      "macros": {},
+      "next_step": "Existing Lean evidence is being checked before new proof work.",
+      "proof_basis": null,
+      "proof_state": "preparing",
+      "receipt": null,
+      "record": "oeis-a288476-replacement-iterate-length",
+      "scope": "in_scope",
+      "statement": "Every finite binary word $s$ has a unique greedy decomposition\n$s=h(t)0^\\delta$, where $t$ is a word over $\\{D,E,O\\}$ and\n$\\delta\\in\\{0,1\\}$. Set $L_n=|R^n(s)|$. For every $n\\geq0$,\n\\begin{align}\nR^n(s)&=h(\\sigma^n(t))0^\\delta,\\\\\nL_{n+3}&=L_{n+2}+4L_{n+1}-2L_n-2\\delta,\\\\\nL_{n+4}&=2L_{n+3}+3L_{n+2}-6L_{n+1}+2L_n.\n\\end{align}\nIf $t$ is nonempty, then the even and odd iterates of $s$ converge\nin the prefix sense to $u^{(0)}$ and $u^{(1)}$, respectively, when\nthe first letter of $t$ is $D$ or $O$, and in the opposite order when\nit is $E$. The two excluded seeds, the empty word and $0$, are fixed.",
+      "status": "preparing",
+      "target_digest": null,
+      "title": "Proof of Kimberling's replacement-iterate length and position conjectures",
+      "toolchain": null,
+      "version": 2,
+      "work": "oeis-a288476-replacement-iterate-length"
+    }
+  ]
+}

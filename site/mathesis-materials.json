@@ -1,0 +1,11 @@
+{
+  "schema": "mathesis.materials.v1",
+  "work": "oeis-a288476-replacement-iterate-length",
+  "version": 2,
+  "repository_url": "https://github.com/mathesis-papers/oeis-a288476-replacement-iterate-length",
+  "site_url": "https://papers.trureturing.org/oeis-a288476-replacement-iterate-length/",
+  "doi": null,
+  "reading": {},
+  "slides": [],
+  "visualizations": []
+}

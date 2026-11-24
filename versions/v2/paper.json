@@ -1,0 +1,66 @@
+{
+  "files": {
+    "pdf": {
+      "bytes": 83757,
+      "matches_public": true,
+      "path": "paper.pdf",
+      "public_sha256": "8bba6aa6ee9571eead52bafee792ceea378f08bc911752d3c940031d2cdf799c",
+      "sha256": "8bba6aa6ee9571eead52bafee792ceea378f08bc911752d3c940031d2cdf799c"
+    },
+    "source": {
+      "bytes": 13325,
+      "matches_public": true,
+      "path": "source.archive",
+      "public_sha256": "c6e7b059e78199fc50d8066f12f9f1d44c6fc4615806f429804085c9e4c05533",
+      "sha256": "c6e7b059e78199fc50d8066f12f9f1d44c6fc4615806f429804085c9e4c05533"
+    }
+  },
+  "source_identity": "Mathesis public projection",
+  "work": {
+    "abstract_text": "We prove Clark Kimberling's length conjecture in OEIS A288476, Comments, revision 2 (June 12, 2017), by replacing its nonoverlapping binary rewriting rule with a three-letter substitution. The iterate lengths satisfy a(n+3)=a(n+2)+4a(n+1)-2a(n), starting with 2,4,8. The same substitution proves existence of the odd and even limiting words and the position conjectures in A288474, A288475, A288552 and A288553. The zero positions divided by their indices tend to the largest root lambda of x^3-x^2-4x+2; the corresponding limit for ones is lambda/(lambda-1). All four stated position bounds hold. For every finite binary seed we also obtain an exact length recurrence; every seed other than the empty word and 0 has the same pair of parity limits, possibly interchanged.",
+    "authors": [
+      {
+        "affiliation": "ChronoAI Pte Ltd, Singapore",
+        "name": "Haobo Ma"
+      },
+      {
+        "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+        "name": "Wenlin Zhang"
+      }
+    ],
+    "concept_doi": null,
+    "current_version": 2,
+    "doi": null,
+    "lean_source": {
+      "revision": "79dfe4f731baccd42dd3c56cf6331a0ddd3cafdb",
+      "url": "https://github.com/the-omega-institute/trureturing/blob/79dfe4f731baccd42dd3c56cf6331a0ddd3cafdb/D5/S1/Words/KimberlingA288476Length.lean"
+    },
+    "license": "CC-BY-4.0",
+    "msc": [],
+    "pdf": {
+      "bytes": 83757,
+      "sha256": "8bba6aa6ee9571eead52bafee792ceea378f08bc911752d3c940031d2cdf799c",
+      "url": "/api/v1/collected-papers/oeis-a288476-replacement-iterate-length/files/pdf?version=2"
+    },
+    "previous_version": null,
+    "publication": "public",
+    "published_on": "2026-11-24T00:52:19.329715096Z",
+    "record": "oeis-a288476-replacement-iterate-length",
+    "repository_name": "oeis-a288476-replacement-iterate-length",
+    "source": {
+      "bytes": 13325,
+      "sha256": "c6e7b059e78199fc50d8066f12f9f1d44c6fc4615806f429804085c9e4c05533",
+      "url": "/api/v1/collected-papers/oeis-a288476-replacement-iterate-length/files/source?version=2"
+    },
+    "title": "Proof of Kimberling's replacement-iterate length and position conjectures",
+    "versions": [
+      {
+        "previous_version": null,
+        "published_on": "2026-11-24T00:52:19.329715096Z",
+        "revision": "2",
+        "version": 2
+      }
+    ],
+    "work": "oeis-a288476-replacement-iterate-length"
+  }
+}
