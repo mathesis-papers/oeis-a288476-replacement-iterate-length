@@ -31,6 +31,7 @@
     "concept_doi": "10.5281/zenodo.24486345",
     "current_version": 2,
     "doi": "10.5281/zenodo.24486346",
+    "kind": "note",
     "lean_source": {
       "revision": "79dfe4f731baccd42dd3c56cf6331a0ddd3cafdb",
       "url": "https://github.com/the-omega-institute/trureturing/blob/79dfe4f731baccd42dd3c56cf6331a0ddd3cafdb/D5/S1/Words/KimberlingA288476Length.lean"
@@ -55,10 +56,12 @@
     "title": "Proof of Kimberling's replacement-iterate length and position conjectures",
     "versions": [
       {
+        "changelog": null,
         "previous_version": null,
         "published_on": "2026-11-24T00:52:19.329715096Z",
         "revision": "2",
-        "version": 2
+        "version": 2,
+        "version_label": null
       }
     ],
     "work": "oeis-a288476-replacement-iterate-length"
